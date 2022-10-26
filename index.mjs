@@ -11,6 +11,7 @@ let devices = new DevicePool();
 // socket server
 const PORT = 10042;
 const io = new Server(PORT);
+console.log("SERVER STARTUP");
 io.sockets.on("connection", socket => {
   if(socket.handshake.query.deviceId) {
     console.log("DEVICE ONLINE: " + socket.handshake.query.deviceId);
@@ -62,7 +63,6 @@ setInterval(() => {
   if(target) {
     target.socket.emit("REQUEST_VALUE");
     target.socket.emit("REQUEST_STATUS");
-
   }
 }, 1000);
 
